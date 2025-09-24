@@ -6,6 +6,7 @@
 #include <iostream>
 #include<cmath>
 #include <set>
+#include<fstream>
 using namespace std;
 Point::Point(int x, int y) {
     if (x >= 0 && x <= 2000 && y >= 0 && y <= 2000) {
@@ -45,15 +46,16 @@ bool isSquare(const Point &a, const Point &b, const Point &c, const Point &d) {
 }
 
 void testIsSquare(const char *filename) {
-    if(!filename) {
+    ifstream ifs(filename);
+    if(!ifs) {
        cout<<"fileNotFound";
         exit(1);
     }
     int x,y;
     Point points[40][40];
 
-    for (int i = 0; i < 4; ++i) {
-        for (int j = 0; j < 5; ++j) {
+    for (int i = 0; i < 10; ++i) {
+        for (int j = 0; j < 4; ++j) {
             *filename>>x>>y;
         }
         if(isSquare(points[i][0],points[i][1],points[i][2],points[i][3])==1) cout<<"negyzet"<<endl;

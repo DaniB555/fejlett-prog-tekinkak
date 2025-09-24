@@ -25,7 +25,7 @@ int main(int argc, char** argv) {
     if(isSquare(p1,p2,p3,p4)==1) cout<<"negyzet"<<endl;
     else cout<<"nem negyzet"<<endl;
 
-    ifstream ifs("data/input.txt");
+
     testIsSquare("data/input.txt");
     delete sz1;
     delete sz2;
