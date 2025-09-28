@@ -1,10 +1,12 @@
 #include <iostream>
 #include "Point.h"
 #include <fstream>
+#include <utility>
 using namespace std;
 
 
 int main(int argc, char** argv) {
+    srand(time(0));
     Point p1(0,0);
     cout<<"p1( "<<p1.getX()<<","<<p1.getY()<<")"<<endl;
     Point p2(0, 2);
@@ -27,6 +29,19 @@ int main(int argc, char** argv) {
 
 
     testIsSquare("data/input.txt");
+    int n;
+    cin>>n;
+    Point *array=createArray(n);
+    printArray(array,n);
+    pair<Point,Point> closest=closestPoints(array,n);
+    cout<<"a legkozelebbi pontparok:"<<endl;
+    cout<<closest.first.getX()<<" "<<closest.first.getY()<<"->"<< closest.second.getX()<<" "<<closest.second.getY()<<endl;
+    pair<Point,Point> farthest=farthestPoints(array,n);
+    cout<<"a legtavolabbi pont par:"<<endl;
+    cout<<farthest.first.getX()<<" "<<farthest.first.getY()<<"->"<< farthest.second.getX()<<" "<<farthest.second.getY()<<endl;
+    sortPoints(array,n);
+    cout<<"x szerinti rendezese a pontoknak:"<<endl;
+    printArray(array,n);
     delete sz1;
     delete sz2;
     delete pp1;
